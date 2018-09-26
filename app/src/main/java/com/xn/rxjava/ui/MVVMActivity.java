@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xn.rxjava.api.RetrofitManager;
+import com.xn.rxjava.entity.Category;
 import com.xn.rxjava.entity.Item;
 import com.xn.rxjava.entity.ItemList;
 import com.xn.rxjava.entity.Student;
@@ -59,6 +60,7 @@ public class MVVMActivity extends AppCompatActivity implements OnClickListener {
         this.findViewById(R.id.clear).setOnClickListener(this);
         this.findViewById(R.id.hotSearch).setOnClickListener(this);
         this.findViewById(R.id.keyQuery).setOnClickListener(this);
+        this.findViewById(R.id.categorySearch).setOnClickListener(this);
 
         mRealmServiceModel.progress().observe(this,this::progress);
         mRealmServiceModel.error().observe(this,this::error);
@@ -114,6 +116,9 @@ public class MVVMActivity extends AppCompatActivity implements OnClickListener {
                 String toQuery = input.getText().toString();
                 this.searchVideos(toQuery);
                 break;
+            case R.id.categorySearch:
+                this.fetchCategory();
+                break;
         }
     }
 
@@ -166,5 +171,26 @@ public class MVVMActivity extends AppCompatActivity implements OnClickListener {
         }else{
             Toast.makeText(this,"没有搜索到相关内容!",Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void fetchCategory(){
+        this.progress(true);
+        RetrofitManager.fetchCategory().subscribe(list->{
+            progress(false);
+            container.removeAllViews();
+            for(Category category : list){
+
+                    View view = LayoutInflater.from(this).inflate(R.layout.video, null);
+                    TextView title = view.findViewById(R.id.title);
+                    title.setText(category.name+"("+category.description+")");
+
+                    ImageView image = view.findViewById(R.id.image);
+                    ImageLoader.getInstance().displayImage(category.headerImage,image);
+
+                    view.findViewById(R.id.button).setVisibility(View.GONE);
+                    container.addView(view);
+
+            }
+        });
     }
 }

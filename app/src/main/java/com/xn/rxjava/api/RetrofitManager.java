@@ -95,7 +95,7 @@ public class RetrofitManager {
               .observeOn(AndroidSchedulers.mainThread());
    }
 
-   public static Observable<Category> fetchCategory(){
+   public static Observable<List<Category>> fetchCategory(){
 
       return  RetrofitManager
               .build()

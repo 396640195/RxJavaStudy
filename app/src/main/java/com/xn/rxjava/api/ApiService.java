@@ -28,6 +28,6 @@ public interface ApiService {
     Observable<ItemList> searchWithKeywords(@QueryMap Map<String,String> params);
 
 
-    @GET("/v4/categories")
-    Observable<Category> fetchCategory();
+    @GET("v4/categories")
+    Observable<List<Category>> fetchCategory();
 }
