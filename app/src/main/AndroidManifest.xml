@@ -24,7 +24,7 @@
             <!--</intent-filter>-->
         <!--</activity>-->
 
-        <activity android:name=".MVVMActivity" android:label="MVVM开发模式学习"
+        <activity android:name=".MVVMActivity" android:label="MVVM+RxJava学习"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             >
             <intent-filter>

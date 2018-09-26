@@ -12,18 +12,10 @@
         android:orientation="vertical"
         tools:context="realm.com.xn.realmdatabase.MainActivity">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="数据库操作"
-            android:textSize="20sp"
-            android:textColor="#222222"
-            android:gravity="center"
-            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+
             >
 
             <Button
@@ -48,7 +40,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
             <EditText
                 android:id="@+id/rm_name"
@@ -64,15 +57,6 @@
                 android:text="删除" />
         </LinearLayout>
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="网络数据请求"
-            android:textSize="20sp"
-            android:textColor="#222222"
-            android:gravity="center"
-            />
 
         <Button
             android:id="@+id/hotSearch"
